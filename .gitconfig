@@ -1,0 +1,7 @@
+[http]
+[user]
+	email = jg.trosh@gmail.com
+	name = John Gliksberg
+[http]
+[http]
+	sslcapath = /home/john/git-certs/
