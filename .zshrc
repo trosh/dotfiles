@@ -1,5 +1,6 @@
 export PATH=$PATH:$HOME/bin
 export EDITOR=vim
+export PDFVIEWER=mupdf
 
 # Lines configured by zsh-newuser-install
 setopt histignorealldups share_history
