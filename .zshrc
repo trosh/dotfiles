@@ -1,4 +1,4 @@
-export PATH=$PATH:$HOME/bin
+export PATH=$HOME/bin:$PATH
 export EDITOR=vim
 export PDFVIEWER=mupdf
 
