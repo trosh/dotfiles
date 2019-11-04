@@ -5,17 +5,17 @@
 rel=$(realpath --relative-to="$HOME" "$PWD")
 
 # Vim
-ln -s "$rel/.vim" "$HOME"
-ln -s ".vim/.vimrc" "$HOME"
+ln -s "$rel/vim" "$HOME/.vim"
+ln -s ".vim/vimrc" "$HOME/.vimrc"
 # Xresources (URXVT)
-ln -s "$rel/.Xresources" "$HOME"
+ln -s "$rel/Xresources" "$HOME/.Xresources"
 xrdb -merge "$HOME/.Xresources"
 # Tmux
-ln -s "$rel/.tmux.conf" "$HOME"
+ln -s "$rel/tmux.conf" "$HOME/.tmux.conf"
 # Bash
-ln -s "$rel/.bashrc" "$HOME"
+ln -s "$rel/bashrc" "$HOME/.bashrc"
 # Zsh
-ln -s "$rel/.zshrc" "$HOME"
-ln -s "$rel/.zfunctions" "$HOME"
+ln -s "$rel/zshrc" "$HOME/.zshrc"
+ln -s "$rel/zfunctions" "$HOME/.zfunctions"
 # Git
-ln -s "$rel/.gitconfig" "$HOME"
+ln -s "$rel/gitconfig" "$HOME/.gitconfig"
