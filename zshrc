@@ -54,6 +54,15 @@ autoload -U promptinit; promptinit
 prompt pure
 PURE_CMD_MAX_EXEC_TIME=0.5
 
+if test -f /etc/arch-release
+then
+	if test $(($(date +%s) - 3600*24*7)) \
+	    -gt $(stat -c %Y /var/lib/pacman/sync)
+	then
+	    echo "/!\\ pacman repos haven't been synced in over a week"
+	fi
+fi
+
 print_proxy () {
 	printf 'http_proxy=%s\n' "$http_proxy"
 	printf 'HTTP_PROXY=%s\n' "$HTTP_PROXY"
