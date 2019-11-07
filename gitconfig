@@ -1,3 +1,5 @@
+[alias]
+	co = checkout
 [user]
 	email = jg.trosh@gmail.com
 	name = John Gliksberg
