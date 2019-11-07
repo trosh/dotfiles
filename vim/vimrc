@@ -58,12 +58,12 @@ colorscheme distinguished
 set mouse=a
 
 " powerline stuff
-"if !has("nvim")
-"    python from powerline.vim import setup as powerline_setup
-"    python powerline_setup()
-"    python del powerline_setup
-"    set rtp+={repository_root}/powerline/bindings/vim
-"endif
+if !has("nvim")
+    python3 from powerline.vim import setup as powerline_setup
+    python3 powerline_setup()
+    python3 del powerline_setup
+    set rtp+={repository_root}/powerline/bindings/vim
+endif
 
 "set rtp=$HOME/src/powerline-2.5/powerline/bindings/vim
 
@@ -85,6 +85,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_tex_checkers = ['chktex']
 
 noremap <F8> :lopen<cr>
 noremap <F9> :lclose<cr>
