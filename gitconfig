@@ -5,3 +5,5 @@
 	name = John Gliksberg
 [http]
 	sslcapath = /home/john/git-certs/
+[core]
+	editor = vim
