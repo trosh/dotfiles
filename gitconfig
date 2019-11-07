@@ -7,3 +7,5 @@
 	sslcapath = /home/john/git-certs/
 [core]
 	editor = vim
+[merge]
+	tool = vimdiff
