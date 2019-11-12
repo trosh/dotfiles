@@ -1,5 +1,5 @@
 urxvt*termName: rxvt-256color
-Rxvt.font: xft:terminus-16:encoding=combined
+Rxvt.font: -xos4-terminus-medium-*-*-*-18-*-*-*-*-*-*-*
 Rxvt.background: black
 Rxvt.foreground: white
 Rxvt.scrollBar: false
