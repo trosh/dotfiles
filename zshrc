@@ -64,12 +64,13 @@ then
 fi
 
 print_proxy () {
-	printf 'http_proxy=%s\n' "$http_proxy"
-	printf 'HTTP_PROXY=%s\n' "$HTTP_PROXY"
-	printf 'https_proxy=%s\n' "$https_proxy"
-	printf 'HTTPS_PROXY=%s\n' "$HTTPS_PROXY"
-	printf 'no_proxy=%s\n' "$no_proxy"
-	printf 'NO_PROXY=%s\n' "$NO_PROXY"
+	printf '\033[7mhttp_proxy\033[m\t%s\n' "$http_proxy"
+	printf '\033[7mHTTP_PROXY\033[m\t%s\n' "$HTTP_PROXY"
+	printf '\033[7mhttps_proxy\033[m\t%s\n' "$https_proxy"
+	printf '\033[7mHTTPS_PROXY\033[m\t%s\n' "$HTTPS_PROXY"
+	printf '\033[7mno_proxy\033[m\t%s\n' "$no_proxy"
+	printf '\033[7mNO_PROXY\033[m\t%s\n' "$NO_PROXY"
+	printf '\033[7mapt.conf\033[m\t%s\n' "$(grep --color=never '^Acquire::http::Proxy' /etc/apt/apt.conf)"
 }
 
 proxy () {
@@ -86,6 +87,9 @@ proxy () {
 			export HTTPS_PROXY=$http_proxy
 			export no_proxy=bull.fr,ao-srv.com
 			export NO_PROXY=$no_proxy
+			grep '^Acquire::http::Proxy' /etc/apt/apt.conf > /dev/null \
+				|| echo "Acquire::http::Proxy \"$http_proxy\";" \
+					| sudo tee -a /etc/apt/apt.conf > /dev/null
 			print_proxy
 			;;
 		off )
@@ -95,6 +99,8 @@ proxy () {
 			export HTTPS_PROXY=$http_proxy
 			export no_proxy=
 			export NO_PROXY=$no_proxy
+			grep '^Acquire::http::Proxy' /etc/apt/apt.conf > /dev/null \
+				&& sudo sed -i '/^Acquire::http::Proxy/d' /etc/apt/apt.conf
 			print_proxy
 			;;
 		* )
