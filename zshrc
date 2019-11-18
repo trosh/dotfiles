@@ -85,7 +85,7 @@ proxy () {
 			export https_proxy=$http_proxy
 			export HTTPS_PROXY=$http_proxy
 			export no_proxy=bull.fr,ao-srv.com
-			export NO_PROXY=$NO_PROXY
+			export NO_PROXY=$no_proxy
 			print_proxy
 			;;
 		off )
