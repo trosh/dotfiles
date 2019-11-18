@@ -70,6 +70,7 @@ print_proxy () {
 	printf '\033[7mHTTPS_PROXY\033[m\t%s\n' "$HTTPS_PROXY"
 	printf '\033[7mno_proxy\033[m\t%s\n' "$no_proxy"
 	printf '\033[7mNO_PROXY\033[m\t%s\n' "$NO_PROXY"
+	printf '\033[7m.gitconfig\033[m\t%s\n' "$(git config --global http.proxy)"
 	printf '\033[7mapt.conf\033[m\t%s\n' "$(grep --color=never '^Acquire::http::Proxy' /etc/apt/apt.conf)"
 }
 
@@ -87,6 +88,7 @@ proxy () {
 			export HTTPS_PROXY=$http_proxy
 			export no_proxy=bull.fr,ao-srv.com
 			export NO_PROXY=$no_proxy
+			git config --global http.proxy "$http_proxy"
 			grep '^Acquire::http::Proxy' /etc/apt/apt.conf > /dev/null \
 				|| echo "Acquire::http::Proxy \"$http_proxy\";" \
 					| sudo tee -a /etc/apt/apt.conf > /dev/null
@@ -99,6 +101,7 @@ proxy () {
 			export HTTPS_PROXY=$http_proxy
 			export no_proxy=
 			export NO_PROXY=$no_proxy
+			git config --global --unset http.proxy
 			grep '^Acquire::http::Proxy' /etc/apt/apt.conf > /dev/null \
 				&& sudo sed -i '/^Acquire::http::Proxy/d' /etc/apt/apt.conf
 			print_proxy
