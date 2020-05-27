@@ -3,9 +3,10 @@
 [user]
 	email = jg.trosh@gmail.com
 	name = John Gliksberg
-[http]
-	sslcapath = /home/john/git-certs/
 [core]
 	editor = vim
+	pager = less --mouse --wheel-lines 5 -RS
 [merge]
 	tool = vimdiff
+[credential]
+	helper = store
