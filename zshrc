@@ -97,7 +97,7 @@ proxy () {
 			export HTTP_PROXY=$http_proxy
 			export https_proxy=$http_proxy
 			export HTTPS_PROXY=$http_proxy
-			export no_proxy=bull.fr,ao-srv.com
+			export no_proxy=frbc.bull.fr,ao-srv.com
 			export NO_PROXY=$no_proxy
 			git config --global http.proxy "$http_proxy"
 			if test -f /etc/apt/apt.conf
