@@ -128,3 +128,85 @@ proxy () {
 			;;
 	esac
 }
+
+vpnc-connect () {
+	sudo vpnc /etc/vpnc/bull.conf
+}
+
+gus () {
+	git status "$@"
+}
+
+beep () {
+	mplayer ~/.local/share/atone.mp3 &> /dev/null
+}
+
+#find $HOME/afm_install -type d -name include \
+#	| while read -r include
+#	do
+#		export INCLUDE_PATH=$INCLUDE_PATH:"$include"
+#	done
+#find $HOME/afm_install -type d -name lib \
+#	| while read -r lib
+#	do
+#		export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$lib"
+#	done
+#export LD_LIBRARY_PATH=$HOME/afm_install/debug.x86/bxiafm/usr/lib64/bxiafm/routing/
+
+. /usr/share/fzf/key-bindings.zsh
+. /usr/share/fzf/completion.zsh
+
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+
+. $HOME/afm/devenv/devenv.sh
+
+gdmodcdo () {
+	for proj in utils core commands routing simu external-dependencies
+	do
+		printf '\033[7m%s\033[m\n' $proj
+		(
+			cd ~/afm/$proj
+			"$@"
+		)
+	done
+}
+
+ghostdo () {
+	for proj in utils core routing
+	do
+		printf '\033[7m%s\033[m\n' $proj
+		(
+			cd ~/afm/$proj
+			"$@"
+		)
+	done
+}
+
+#
+#jenkinsinit () {
+#	wget --save-cookies $HOME/.jenkins_cookie.txt --keep-session-cookies --post-data 'j_username=guest&j_password=8x%E2%82%AC&from=%2Fjenkins%2F&Submit=Sign+in&remember_me=on' --delete-after http://10.106.92.77/jenkins/j_acegi_security_check 2> /dev/null
+#}
+#
+#wgetjenkins () {
+#	wget --load-cookies $HOME/.jenkins_cookie.txt http://10.106.92.77/jenkins/view/"$1" -O - 2> /dev/null
+#}
+#
+#jenkins () {
+#	wgetjenkins "$1" | grep -o 'job_[^"]*' | sed 's/^job_//' \
+#		| while read -r proj
+#		do
+#			wgetjenkins "$1"/job/$proj/configure > /tmp/jenkinsconfigure.html
+#			repo=$(grep -o 'http[^"]*bitbucket[^"]*' /tmp/jenkinsconfigure.html)
+#			branch=$(grep -o '\*/master[^>]*' /tmp/jenkinsconfigure.html | sed '1d;s/.*value="//;s/"//')
+#			printf '%-40s %-75s %s\n' $proj $repo $branch
+#		done
+#}
+
+pair () {
+	name=pair
+	tmux -S /tmp/$name new -s $name -d
+	chmod 777 /tmp/$name
+	tmux -S /tmp/$name attach -t $name
+	rm /tmp/$name
+}
