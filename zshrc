@@ -93,7 +93,7 @@ proxy () {
 	fi
 	case $1 in
 		on )
-			export http_proxy=http://w3p2.atos-infogerance.fr:8080
+			export http_proxy=127.0.0.1:3128
 			export HTTP_PROXY=$http_proxy
 			export https_proxy=$http_proxy
 			export HTTPS_PROXY=$http_proxy
