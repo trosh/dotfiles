@@ -1,4 +1,5 @@
 export PATH=$HOME/bin:$PATH
+export XDG_DATA_DIRS=/usr/local/share/:/usr/share/:$HOME/.fwddesktop/
 export EDITOR=vim
 export PDFVIEWER=mupdf
 
@@ -36,6 +37,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 bindkey '\e.' insert-last-word
 bindkey '^[[1;5A' history-beginning-search-backward
 bindkey '^[[1;5B' history-beginning-search-forward
+bindkey -s '^L' '^Utest $((RANDOM%6)) -eq 0 && timeout 6 cbeams -o;clear\n'
 autoload -Uz copy-earlier-word
 zle -N copy-earlier-word
 bindkey '^[,' copy-earlier-word
@@ -45,14 +47,19 @@ alias l="ls"
 alias ll="ls -l"
 alias lh="ls -lh"
 alias grep="grep --color=auto"
-alias gus="git status"
 #alias ssh="TERM=xterm-256color ssh"
 
 autoload -U colors; colors
 fpath=("$HOME/.zfunctions" $fpath)
 autoload -U promptinit; promptinit
-prompt pure
-PURE_CMD_MAX_EXEC_TIME=0.5
+prompt clint
+#prompt pure
+#PURE_CMD_MAX_EXEC_TIME=0.5
+#PURE_PROMPT_SYMBOL='>'
+#PURE_PROMPT_VICMD_SYMBOL='<'
+#PURE_GIT_DOWN_ARROW='v'
+#PURE_GIT_UP_ARROW='^'
+#PURE_GIT_STASH_SYMBOL='#'
 
 if test -f /etc/arch-release
 then
