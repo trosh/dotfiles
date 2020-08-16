@@ -1,6 +1,6 @@
 urxvt*termName: rxvt-256color
-!Rxvt.font: -*-terminus-medium-*-*-*-18-*-*-*-*-*-*-*,xft:DejaVu Sans Mono
-Rxvt.font: xft:Terminus:size=14,xft:DejaVu Sans Mono
+Rxvt.font: -*-terminus-medium-*-*-*-18-*-*-*-*-*-*-*,xft:DejaVu Sans Mono
+!Rxvt.font: xft:Terminus:size=14,xft:DejaVu Sans Mono
 Rxvt.scrollBar: false
 Rxvt.cursorBlink: true
 Rxvt.saveline: 2048
