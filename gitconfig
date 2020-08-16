@@ -10,3 +10,5 @@
 	tool = vimdiff
 [credential]
 	helper = store
+[pull]
+	ff = only
