@@ -106,5 +106,5 @@ nmap <F4> :call SVED_Sync()<CR>
 noremap <F8> :lopen<cr>
 noremap <F9> :lclose<cr>
 
-map <C-K> :pyf /usr/share/clang/clang-format.py<cr>
-imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
+"map <C-K> :pyf /usr/share/clang/clang-format.py<cr>
+"imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
