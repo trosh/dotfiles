@@ -133,13 +133,27 @@ vpnc-connect () {
 	sudo vpnc /etc/vpnc/bull.conf
 }
 
+vpnc-disconnect () {
+	sudo vpnc-disconnect
+	sudo ip route del 129.184.48.140
+	sudo systemctl restart NetworkManager.service
+}
+
 gus () {
 	git status "$@"
+}
+
+tiga () {
+	tig --all "$@"
 }
 
 beep () {
 	mplayer ~/.local/share/atone.mp3 &> /dev/null
 }
+
+# fmpoc/rttk stuff
+export MODE=release
+export ZLIB=yes
 
 #find $HOME/afm_install -type d -name include \
 #	| while read -r include
