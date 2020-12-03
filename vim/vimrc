@@ -56,7 +56,14 @@ colorscheme distinguished
 " Enable use of the mouse for all modes
 " vital if you live in the 21st century
 set mouse=a
-set ttymouse=sgr
+if has("mouse_sgr")
+	set ttymouse=sgr " Faster mouse in tty, xterm patch version >= 277
+elseif has("mouse_xterm")
+	set ttymouse=xterm2 " Faster mouse in tty, xterm patch version from 95 to 276
+endif
+if executable("fbterm")
+	set ttymouse=xterm " Reset to xterm in order to use GPM mouse
+endif
 
 set tags=./tags;,tags;
 "set cscopequickfix=s-,c-,d-,i-,t-,e-

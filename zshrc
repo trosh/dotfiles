@@ -50,6 +50,23 @@ alias grep="grep --color=auto"
 #alias ssh="TERM=xterm-256color ssh"
 export LESS="--mouse --wheel-lines=4 --RAW-CONTROL-CHARS --chop-long-lines"
 
+case $TERM in
+	xterm*)
+		if [ -e /usr/share/terminfo/x/xterm-256color ]
+		then
+			export TERM=xterm-256color
+		elif [ -e /usr/share/terminfo/x/xterm-color ]
+		then
+			export TERM=xterm-color
+		else
+			export TERM=xterm
+		fi
+		;;
+	linux)
+		[ -n "$FBTERM" ] && export TERM=fbterm
+		;;
+esac
+
 autoload -U colors; colors
 fpath=("$HOME/.zfunctions" $fpath)
 autoload -U promptinit; promptinit
