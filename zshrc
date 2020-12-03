@@ -48,6 +48,7 @@ alias ll="ls -l"
 alias lh="ls -lh"
 alias grep="grep --color=auto"
 #alias ssh="TERM=xterm-256color ssh"
+export LESS="--mouse --wheel-lines=4 --RAW-CONTROL-CHARS --chop-long-lines"
 
 autoload -U colors; colors
 fpath=("$HOME/.zfunctions" $fpath)
