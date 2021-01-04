@@ -191,3 +191,10 @@ bibgrep () {
 	done
 	cd -
 }
+
+if test "$((RANDOM%6))" -eq 0
+then
+	printf '\033[7m%s\033[m\n' "checking password-store state…"
+	pass git fetch syno \
+		&& pass git status
+fi
