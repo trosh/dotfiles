@@ -181,3 +181,13 @@ pair () {
 	tmux -S /tmp/$name attach -t $name
 	rm /tmp/$name
 }
+
+bibgrep () {
+	cd "$HOME/thesis/Biblio/pdf"
+	for pdf in *.pdf
+	do
+		printf '\033[7m%s\033[m\n' "$pdf"
+		pdftotext "$pdf" - | grep "$@"
+	done
+	cd -
+}
