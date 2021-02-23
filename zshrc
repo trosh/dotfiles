@@ -16,6 +16,8 @@ export KEYTIMEOUT=1
 autoload -Uz compinit
 compinit
 
+alias LESS="--mouse-wheel-lines=4"
+
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
@@ -104,7 +106,8 @@ proxy () {
 	fi
 	case $1 in
 		on )
-			export http_proxy=127.0.0.1:3128
+			export http_proxy=http://w3p2.atos-infogerance.fr:8080
+			#export http_proxy=http://proxy-fr.glb.my-it-solutions.net:84
 			export HTTP_PROXY=$http_proxy
 			export https_proxy=$http_proxy
 			export HTTPS_PROXY=$http_proxy
@@ -192,9 +195,15 @@ bibgrep () {
 	cd -
 }
 
-if test "$((RANDOM%6))" -eq 0
+if test -f /usr/bin/pass && test "$((RANDOM%6))" -eq 0
 then
 	printf '\033[7m%s\033[m\n' "checking password-store state…"
 	pass git fetch syno \
 		&& pass git status
 fi
+
+#no_ow() {
+#	eval "$(dircolors | sed 's/ow=[^:]*/ow=0/')"
+#}
+#
+#no_ow

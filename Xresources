@@ -6,7 +6,6 @@ Rxvt.cursorBlink: true
 Rxvt.saveline: 2048
 Rxvt.urgentOnBell: true
 Rxvt.depth: 24
-
 Rxvt.background: black
 Rxvt.foreground: white
 Rxvt.cursorColor: red
