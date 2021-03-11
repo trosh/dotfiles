@@ -169,10 +169,23 @@ beep () {
 export MODE=release
 export ZLIB=yes
 
-. /usr/share/fzf/key-bindings.zsh
-. /usr/share/fzf/completion.zsh
+if test -d /usr/share/fzf
+then
+	. /usr/share/fzf/key-bindings.zsh
+	. /usr/share/fzf/completion.zsh
+elif test -d /usr/share/doc/fzf
+then
+	. /usr/share/doc/fzf/examples/key-bindings.zsh
+	. /usr/share/doc/fzf/examples/completion.zsh
+fi
 
-export FZF_DEFAULT_COMMAND='fd --type f'
+if fd --version &> /dev/null
+then
+	export FZF_DEFAULT_COMMAND='fd --type f'
+elif fdfind --version &> /dev/null
+then
+	export FZF_DEFAULT_COMMAND='fdfind --type f'
+fi
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
 . $HOME/afm/devenv/devenv.sh
