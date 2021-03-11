@@ -48,7 +48,9 @@ MapToggle <F11> ignorecase
 MapToggle <F12> paste
 "set pastetoggle=<F12>
 
-"set t_Co=256
+if $TERM == "xterm-color"
+	set t_Co=256
+endif
 "let g:gruvbox_contrast_dark = "hard"
 set background=dark
 colorscheme distinguished
