@@ -147,11 +147,21 @@ proxy () {
 	esac
 }
 
+gus () {
+	git status "$@"
+}
+
+ado () {
+	git -C $HOME/afm submodule foreach "$* ||:"
+}
+
 export CDRIVE=/mnt/c
 export CDRIVE_HOME="$CDRIVE/Users/A650138"
 c () {
 	cd "$CDRIVE"
 }
 chome () {
-    cd "$CDRIVE_HOME"
+	cd "$CDRIVE_HOME"
 }
+
+. "$HOME/afm/devenv/devenv.sh"
