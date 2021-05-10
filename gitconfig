@@ -1,11 +1,12 @@
 [alias]
 	co = checkout
+	st = status
 [user]
 	email = jg.trosh@gmail.com
 	name = John Gliksberg
 [http]
 	sslcapath = /home/john/git-certs/
-	sslVerify = false
+	sslCAinfo = /etc/ssl/certs/ca-certificates.crt
 [core]
 	editor = vim
 	#pager = less
