@@ -99,15 +99,19 @@ print_proxy () {
 }
 
 proxy () {
-	if ((# != 1))
+	if ((# < 1))
 	then
 		print_proxy
 		return
 	fi
 	case $1 in
-		on )
-			export http_proxy=http://w3p2.atos-infogerance.fr:8080
-			#export http_proxy=http://proxy-fr.glb.my-it-solutions.net:84
+		_on )
+			if ((# != 2))
+			then
+				echo proxy _on requires a url
+				return -1
+			fi
+			export http_proxy=$2
 			export HTTP_PROXY=$http_proxy
 			export https_proxy=$http_proxy
 			export HTTPS_PROXY=$http_proxy
@@ -121,6 +125,15 @@ proxy () {
 						| sudo tee -a /etc/apt/apt.conf > /dev/null
 			fi
 			print_proxy
+			;;
+		w3p2 | on )
+			proxy _on http://w3p2.atos-infogerance.fr:8080
+			;;
+		w3p1 )
+			proxy _on http://w3p1.atos-infogerance.fr:8080
+			;;
+		glb )
+			proxy _on http://proxy-fr.glb.my-it-solutions.net:84
 			;;
 		off )
 			export http_proxy=
