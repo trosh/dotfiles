@@ -76,10 +76,11 @@ prompt clint
 
 if test -f /etc/arch-release
 then
-	if test $(($(date +%s) - 3600*24*7)) \
-	    -gt $(stat -c %Y /var/lib/pacman/sync)
+	pacdate=$(stat -c %Y /var/lib/pacman/sync)
+	if test $(($(date +%s) - 3600*24*7)) -gt "$pacdate"
 	then
 	    echo "/!\\ pacman repos haven't been synced in over a week"
+	    echo "/!\\ (since $(date -d "@$pacdate"))"
 	fi
 fi
 
