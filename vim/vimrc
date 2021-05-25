@@ -106,7 +106,9 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 "noremap <c-b> :CtrlP $BXI_SRC_DIR/*
 noremap <c-t> :FZF<CR>
-source /usr/share/doc/fzf/examples/fzf.vim
+if filereadable("/usr/share/doc/fzf/examples/fzf.vim")
+	source /usr/share/doc/fzf/examples/fzf.vim
+endif
 
 " Syntastic stuff
 "set statusline+=%#warningmsg#
