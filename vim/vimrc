@@ -56,7 +56,11 @@ if $TERM == "xterm-color"
 endif
 "let g:gruvbox_contrast_dark = "hard"
 set background=dark
-colorscheme distinguished
+if &t_Co >= 256 || has("gui_running")
+	colorscheme distinguished
+else
+	colorscheme slate
+endif
 
 " Enable use of the mouse for all modes
 " vital if you live in the 21st century
