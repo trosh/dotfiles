@@ -29,6 +29,8 @@ filetype indent on
 set autoindent
 set smartindent
 "set cino=(0
+runtime ftplugin/man.vim
+set keywordprg=:Man
 
 " Map key to toggle opt
 function MapToggle(key, opt)
