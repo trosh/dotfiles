@@ -206,10 +206,14 @@ export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
 pair () {
 	name=pair
+	trap "rm /tmp/$name" INT TERM QUIT EXIT
 	tmux -S /tmp/$name new -s $name -d
 	chmod 777 /tmp/$name
+	addr=$(ip a | grep -A2 tun0 | grep -o '[0-9.]\{11,15\}')
+	cmd=$(printf 'test -e /tmp/%s && tmux -S /tmp/%s attach' $name $name)
+	printf 'ssh -t guest@%s "%s"' "$addr" "$cmd" \
+		| xclip -selection clipboard -i
 	tmux -S /tmp/$name attach -t $name
-	rm /tmp/$name
 }
 
 bibgrep () {
