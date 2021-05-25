@@ -1,40 +1,41 @@
-urxvt*termName: rxvt-256color
-Rxvt.font: -*-terminus-medium-*-*-*-18-*-*-*-*-*-*-*,xft:DejaVu Sans Mono
+URxvt.termName: rxvt-256color
+URxvt.font: -*-terminus-medium-*-*-*-18-*-*-*-*-*-*-*,xft:DejaVu Sans Mono
 !Rxvt.font: xft:Terminus:size=14,xft:DejaVu Sans Mono
-Rxvt.scrollBar: false
-Rxvt.cursorBlink: true
-Rxvt.saveline: 2048
-Rxvt.urgentOnBell: true
-Rxvt.depth: 24
-Rxvt.background: black
-Rxvt.foreground: white
-Rxvt.cursorColor: red
+URxvt.scrollBar: false
+URxvt.cursorBlink: true
+URxvt.saveline: 10000
+URxvt.urgentOnBell: true
+URxvt.depth: 24
+
+URxvt.background: black
+URxvt.foreground: white
+URxvt.cursorColor: red
 ! black
-Rxvt.color0:       #151515
-Rxvt.color8:       #505050
+URxvt.color0:       #151515
+URxvt.color8:       #505050
 ! red
-Rxvt.color1:       #fb9fb1
-Rxvt.color9:       #fb9fb1
+URxvt.color1:       #fb9fb1
+URxvt.color9:       #fb9fb1
 ! green
-Rxvt.color2:       #acc267
-Rxvt.color10:      #acc267
+URxvt.color2:       #acc267
+URxvt.color10:      #acc267
 ! yellow
-Rxvt.color3:       #ddb26f
-Rxvt.color11:      #ddb26f
+URxvt.color3:       #ddb26f
+URxvt.color11:      #ddb26f
 ! blue
-Rxvt.color4:       #6fc2ef
-Rxvt.color12:      #6fc2ef
+URxvt.color4:       #6fc2ef
+URxvt.color12:      #6fc2ef
 ! magenta
-Rxvt.color5:       #e1a3ee
-Rxvt.color13:      #e1a3ee
+URxvt.color5:       #e1a3ee
+URxvt.color13:      #e1a3ee
 ! cyan
-Rxvt.color6:       #12cfc0
-Rxvt.color14:      #12cfc0
+URxvt.color6:       #12cfc0
+URxvt.color14:      #12cfc0
 ! white
-Rxvt.color7:       #d0d0d0
-Rxvt.color15:      #f5f5f5
-Rxvt.transparent: true
-Rxvt.shading:     20
+URxvt.color7:       #d0d0d0
+URxvt.color15:      #f5f5f5
+URxvt.transparent: true
+URxvt.shading:     20
 
 URxvt.keysym.M-C-1: command:\033]710;xft:Terminus:size=12\007\033]711;xft:Terminus:size=12:bold\007
 URxvt.keysym.M-C-2: command:\033]710;xft:Terminus:size=14\007\033]711;xft:Terminus:size=14:bold\007
@@ -45,3 +46,27 @@ URxvt.keysym.M-C-5: command:\033]710;xft:SourceCodePro:size=12\007\033]711;xft:S
 URxvt.keysym.M-C-6: command:\033]710;xft:SourceCodePro:size=14\007\033]711;xft:SourceCodePro:size=14:bold\007
 URxvt.keysym.M-C-7: command:\033]710;xft:SourceCodePro:size=16\007\033]711;xft:SourceCodePro:size=16:bold\007
 URxvt.keysym.M-C-8: command:\033]710;xft:SourceCodePro:size=18\007\033]711;xft:SourceCodePro:size=18:bold\007
+
+! Sensible defaults
+XTerm.termName: xterm-256color
+XTerm.vt100.locale: false
+XTerm.vt100.utf8: true
+! Assume window titles are UTF-8 encoded
+XTerm.VT100.utf8Title: true
+XTerm.vt100.saveLines: 4096
+XTerm.vt100.scrollTtyOutput: false
+XTerm.vt100.scrollKey: true
+XTerm.vt100.bellIsUrgent: true
+! Convert Meta-x into "ESC x", not "ø"
+XTerm.vt100.metaSendsEscape: true
+! Styling
+XTerm.vt100.faceName: Terminus
+!XTerm.vt100.boldMode: false
+XTerm.vt100.faceSize: 14
+XTerm.vt100.internalBorder: 4
+XTerm.borderWidth: 0
+XTerm*background: black
+XTerm*foreground: white
+XTerm*cursorColor: red
+! Allow HT (TAB) in paste; i.e. do not convert to space character
+XTerm.VT100.DisallowedPasteControls: BS,DEL,ESC
