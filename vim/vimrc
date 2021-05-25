@@ -106,6 +106,7 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 "noremap <c-b> :CtrlP $BXI_SRC_DIR/*
 noremap <c-t> :FZF<CR>
+source /usr/share/doc/fzf/examples/fzf.vim
 
 " Syntastic stuff
 "set statusline+=%#warningmsg#
@@ -124,4 +125,7 @@ noremap <F9> :lclose<cr>
 
 "map <C-K> :pyf /usr/share/clang/clang-format.py<cr>
 "imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
-source /usr/share/doc/fzf/examples/fzf.vim
+
+filetype plugin indent on
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor = "latex"
