@@ -1,6 +1,8 @@
 [alias]
-	co = checkout
 	st = status
+	co = checkout
+	do = submodule foreach
+	supdate = submodule update --remote --rebase
 [user]
 	email = jg.trosh@gmail.com
 	name = John Gliksberg
@@ -16,3 +18,5 @@
 	helper = store
 [pull]
 	ff = only
+[init]
+	defaultBranch = master
