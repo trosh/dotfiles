@@ -52,6 +52,8 @@ alias grep="grep --color=auto"
 #alias ssh="TERM=xterm-256color ssh"
 export LESS="--mouse --wheel-lines=4 --RAW-CONTROL-CHARS --chop-long-lines"
 
+compdef vman="man"
+
 alias sway="MOZ_ENABLE_WAYLAND=1 XDG_CURRENT_DESKTOP=sway sway"
 case $TERM in
 	xterm*)
