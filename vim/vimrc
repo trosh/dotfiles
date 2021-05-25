@@ -20,6 +20,7 @@ set incsearch
 filetype plugin on
 
 syntax enable
+au BufNewFile,BufRead CMakeLists*.txt set filetype=cmake
 set tabstop=8
 set shiftwidth=8
 set smarttab
