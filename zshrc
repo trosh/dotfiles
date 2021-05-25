@@ -52,6 +52,7 @@ alias grep="grep --color=auto"
 #alias ssh="TERM=xterm-256color ssh"
 export LESS="--mouse --wheel-lines=4 --RAW-CONTROL-CHARS --chop-long-lines"
 
+alias sway="MOZ_ENABLE_WAYLAND=1 XDG_CURRENT_DESKTOP=sway sway"
 case $TERM in
 	xterm*)
 		if [ -e /usr/share/terminfo/x/xterm-256color ]
@@ -65,7 +66,16 @@ case $TERM in
 		fi
 		;;
 	linux)
-		[ -n "$FBTERM" ] && export TERM=fbterm
+		if test -n "$FBTERM"
+		then
+			export TERM=fbterm
+		else
+			case $(tty) in
+				/dev/tty1) startx ;;
+				/dev/tty2) sway ;;
+				/dev/tty3) FBTERM=1 exec fbterm ;;
+			esac
+		fi
 		;;
 esac
 
