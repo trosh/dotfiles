@@ -216,6 +216,10 @@ export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
 . $HOME/afm/devenv/devenv.sh
 
+ado () {
+	git -C $HOME/afm submodule foreach "$* ||:"
+}
+
 pair () {
 	name=pair
 	trap "rm /tmp/$name" INT TERM QUIT EXIT
