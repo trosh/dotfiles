@@ -7,3 +7,6 @@
 [submodule "vim/bundle/sved"]
 	path = vim/bundle/sved
 	url = https://github.com/peder2tm/sved.git
+[submodule "vim/bundle/vim-superman"]
+	path = vim/bundle/vim-superman
+	url = https://github.com/jez/vim-superman
