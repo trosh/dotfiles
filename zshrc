@@ -245,8 +245,7 @@ then
 		&& pass git status
 fi
 
-#no_ow() {
-#	eval "$(dircolors | sed 's/ow=[^:]*/ow=0/')"
-#}
-#
-#no_ow
+sshtee () {
+	remote=${1:-vix}
+	ssh "$remote" | tee --append "sessions_${remote}_$(date -Ihours).log"
+}
