@@ -220,3 +220,7 @@ chome () {
 }
 
 . "$HOME/afm/devenv/devenv.sh"
+
+sshtee () {
+	ssh "$@" 2>&1 | tee --append "ssh_${1}_$(date --iso-8601=hours).log"
+}
