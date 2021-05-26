@@ -114,31 +114,74 @@ if ! shopt -oq posix; then
 fi
 
 print_proxy () {
-	printf 'http_proxy=%s\n' "$http_proxy"
-	printf 'HTTP_PROXY=%s\n' "$HTTP_PROXY"
-	printf 'https_proxy=%s\n' "$https_proxy"
-	printf 'HTTPS_PROXY=%s\n' "$HTTPS_PROXY"
+	printf '\033[7mhttp_proxy\033[m\t%s\n' "$http_proxy"
+	printf '\033[7mHTTP_PROXY\033[m\t%s\n' "$HTTP_PROXY"
+	printf '\033[7mhttps_proxy\033[m\t%s\n' "$https_proxy"
+	printf '\033[7mHTTPS_PROXY\033[m\t%s\n' "$HTTPS_PROXY"
+	printf '\033[7mno_proxy\033[m\t%s\n' "$no_proxy"
+	printf '\033[7mNO_PROXY\033[m\t%s\n' "$NO_PROXY"
+	printf '\033[7m.gitconfig\033[m\t%s\n' "$(git config --global http.proxy)"
+	if test -d /etc/apt
+	then
+		printf '\033[7mapt.conf\033[m\t%s\n' \
+			"$(grep --color=never '^Acquire::http::Proxy' /etc/apt/apt.conf)"
+	fi
 }
 
 proxy () {
-	if (("$#" != 1))
+	if (($# < 1))
 	then
 		print_proxy
 		return
 	fi
 	case $1 in
-		on )
-			export http_proxy=http://w3p2.atos-infogerance.fr:8080
+		_on )
+			if (($# != 2))
+			then
+				echo proxy _on requires a url
+				return -1
+			fi
+			export http_proxy=$2
 			export HTTP_PROXY=$http_proxy
 			export https_proxy=$http_proxy
 			export HTTPS_PROXY=$http_proxy
+			export no_proxy=frbc.bull.fr,ao-srv.com
+			export NO_PROXY=$no_proxy
+			git config --global http.proxy "$http_proxy"
+			if test -d /etc/apt
+			then
+				if grep '^Acquire::http::Proxy' /etc/apt/apt.conf > /dev/null
+				then
+					sudo sed -i "/^Acquire::http::Proxy/s/ .*/ \"$http_proxy\";/" /etc/apt/apt.conf
+				else
+					echo "Acquire::http::Proxy \"$http_proxy\";" \
+						| sudo tee -a /etc/apt/apt.conf > /dev/null
+				fi
+			fi
 			print_proxy
+			;;
+		w3p2 | on )
+			proxy _on http://w3p2.atos-infogerance.fr:8080
+			;;
+		w3p1 )
+			proxy _on http://w3p1.atos-infogerance.fr:8080
+			;;
+		glb )
+			proxy _on http://proxy-fr.glb.my-it-solutions.net:84
 			;;
 		off )
 			export http_proxy=
 			export HTTP_PROXY=$http_proxy
 			export https_proxy=$http_proxy
 			export HTTPS_PROXY=$http_proxy
+			export no_proxy=
+			export NO_PROXY=$no_proxy
+			git config --global --unset http.proxy
+			if test -f /etc/apt/apt.conf
+			then
+				grep '^Acquire::http::Proxy' /etc/apt/apt.conf > /dev/null \
+					&& sudo sed -i '/^Acquire::http::Proxy/d' /etc/apt/apt.conf
+			fi
 			print_proxy
 			;;
 		* )
