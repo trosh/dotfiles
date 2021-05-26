@@ -195,7 +195,19 @@ gus () {
 }
 
 ado () {
-	git -C $HOME/afm submodule foreach "$* ||:"
+	quiet=
+	if test "$1" = --quiet
+	then
+		shift
+		quiet=--quiet
+	fi
+	recursive=
+	if test "$1" = --recursive
+	then
+		shift
+		recursive=--recursive
+	fi
+	git -C $HOME/afm submodule $quiet foreach $recursive "$* ||:"
 }
 
 export CDRIVE=/mnt/c
