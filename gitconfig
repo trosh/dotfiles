@@ -7,7 +7,7 @@
 	email = jg.trosh@gmail.com
 	name = John Gliksberg
 [http]
-	sslcapath = /home/john/git-certs/
+	sslCAPath = /home/john/.git-certs
 	sslCAinfo = /etc/ssl/certs/ca-certificates.crt
 [core]
 	editor = vim
