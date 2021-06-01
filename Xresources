@@ -42,10 +42,10 @@ URxvt.keysym.M-C-2: command:\033]710;xft:Terminus:size=14\007\033]711;xft:Termin
 URxvt.keysym.M-C-3: command:\033]710;xft:Terminus:size=16\007\033]711;xft:Terminus:size=16:bold\007
 URxvt.keysym.M-C-4: command:\033]710;xft:Terminus:size=18\007\033]711;xft:Terminus:size=18:bold\007
 
-URxvt.keysym.M-C-5: command:\033]710;xft:SourceCodePro:size=12\007\033]711;xft:SourceCodePro:size=12:bold\007
-URxvt.keysym.M-C-6: command:\033]710;xft:SourceCodePro:size=14\007\033]711;xft:SourceCodePro:size=14:bold\007
-URxvt.keysym.M-C-7: command:\033]710;xft:SourceCodePro:size=16\007\033]711;xft:SourceCodePro:size=16:bold\007
-URxvt.keysym.M-C-8: command:\033]710;xft:SourceCodePro:size=18\007\033]711;xft:SourceCodePro:size=18:bold\007
+URxvt.keysym.M-C-5: command:\033]710;xft:Anonymous Pro:size=12\007\033]711;xft:Anonymous Pro:size=12:bold\007
+URxvt.keysym.M-C-6: command:\033]710;xft:Anonymous Pro:size=14\007\033]711;xft:Anonymous Pro:size=14:bold\007
+URxvt.keysym.M-C-7: command:\033]710;xft:Anonymous Pro:size=16\007\033]711;xft:Anonymous Pro:size=16:bold\007
+URxvt.keysym.M-C-8: command:\033]710;xft:Anonymous Pro:size=18\007\033]711;xft:Anonymous Pro:size=18:bold\007
 
 ! Sensible defaults
 XTerm.termName: xterm-256color
